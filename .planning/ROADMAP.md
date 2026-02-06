@@ -12,7 +12,7 @@ BidFlow transforms EU tender responses for SMEs through six phases: authenticati
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation & Authentication** - User accounts with demo data for immediate testing
+- [x] **Phase 1: Foundation & Authentication** - User accounts with demo data for immediate testing
 - [ ] **Phase 2: Company Profiling** - SME profile management with capabilities and credentials
 - [ ] **Phase 3: Tender Discovery** - Browse, filter, and match tenders to company profile
 - [ ] **Phase 4: Bid Workspace** - Structured Q&A workflow with draft management
@@ -33,9 +33,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Project bootstrap, database schema, and seed data
-- [ ] 01-02-PLAN.md — Authentication system (Auth.js v5, server actions, login/signup UI)
-- [ ] 01-03-PLAN.md — Protected dashboard, app header with logout, landing page
+- [x] 01-01-PLAN.md — Project bootstrap, database schema, and seed data
+- [x] 01-02-PLAN.md — Authentication system (Auth.js v5, server actions, login/signup UI)
+- [x] 01-03-PLAN.md — Protected dashboard, app header with logout, landing page
 
 ### Phase 2: Company Profiling
 **Goal**: SMEs can create and manage comprehensive company profiles that drive tender matching
@@ -121,7 +121,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Authentication | 0/3 | Planned | - |
+| 1. Foundation & Authentication | 3/3 | Complete | 2026-02-06 |
 | 2. Company Profiling | 0/TBD | Not started | - |
 | 3. Tender Discovery | 0/TBD | Not started | - |
 | 4. Bid Workspace | 0/TBD | Not started | - |
