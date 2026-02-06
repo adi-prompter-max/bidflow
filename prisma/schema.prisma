@@ -1,0 +1,113 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// === Auth.js Required Models ===
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  password      String    // For credentials auth
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  companies     Company[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+  @@unique([identifier, token])
+}
+
+// === BidFlow Domain Models ===
+
+model Company {
+  id             String   @id @default(cuid())
+  name           String
+  sector         String   // "IT" or "Construction"
+  description    String?  @db.Text
+  capabilities   String[] // Array of capability tags
+  certifications String[] // Array of certification names
+  ownerId        String
+  owner          User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  bids           Bid[]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Tender {
+  id          String       @id @default(cuid())
+  title       String
+  description String       @db.Text
+  value       Float        // Estimated value in EUR
+  deadline    DateTime
+  sector      String       // "IT" or "Construction"
+  source      String       @default("TED") // Data source
+  status      TenderStatus @default(OPEN)
+  requirements String?     @db.Text // JSON string of tender requirements
+  documents    String?     @db.Text // JSON string of document references
+  bids        Bid[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Bid {
+  id        String    @id @default(cuid())
+  tenderId  String
+  companyId String
+  status    BidStatus @default(DRAFT)
+  content   Json?     // Structured bid content as JSON
+  tender    Tender    @relation(fields: [tenderId], references: [id], onDelete: Cascade)
+  company   Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+enum TenderStatus {
+  OPEN
+  CLOSED
+  AWARDED
+}
+
+enum BidStatus {
+  DRAFT
+  IN_REVIEW
+  FINALIZED
+  SUBMITTED
+}
