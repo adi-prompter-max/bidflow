@@ -30,10 +30,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. User can log in and session persists across browser refresh
   3. User can log out from any page
   4. Demo company profile, sample tenders, and example bids exist in database for immediate testing
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: TBD during planning
+- [ ] 01-01-PLAN.md — Project bootstrap, database schema, and seed data
+- [ ] 01-02-PLAN.md — Authentication system (Auth.js v5, server actions, login/signup UI)
+- [ ] 01-03-PLAN.md — Protected dashboard, app header with logout, landing page
 
 ### Phase 2: Company Profiling
 **Goal**: SMEs can create and manage comprehensive company profiles that drive tender matching
@@ -119,7 +121,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Authentication | 0/TBD | Not started | - |
+| 1. Foundation & Authentication | 0/3 | Planned | - |
 | 2. Company Profiling | 0/TBD | Not started | - |
 | 3. Tender Discovery | 0/TBD | Not started | - |
 | 4. Bid Workspace | 0/TBD | Not started | - |
