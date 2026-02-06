@@ -100,34 +100,34 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | — | Pending |
-| AUTH-02 | — | Pending |
-| AUTH-03 | — | Pending |
-| PROF-01 | — | Pending |
-| PROF-02 | — | Pending |
-| PROF-03 | — | Pending |
-| PROF-04 | — | Pending |
-| TEND-01 | — | Pending |
-| TEND-02 | — | Pending |
-| TEND-03 | — | Pending |
-| TEND-04 | — | Pending |
-| BID-01 | — | Pending |
-| BID-02 | — | Pending |
-| BID-03 | — | Pending |
-| BID-04 | — | Pending |
-| AGEN-01 | — | Pending |
-| AGEN-02 | — | Pending |
-| AGEN-03 | — | Pending |
-| VALD-01 | — | Pending |
-| VALD-02 | — | Pending |
-| VALD-03 | — | Pending |
-| VALD-04 | — | Pending |
+| AUTH-01 | Phase 1 | Pending |
+| AUTH-02 | Phase 1 | Pending |
+| AUTH-03 | Phase 1 | Pending |
+| PROF-01 | Phase 2 | Pending |
+| PROF-02 | Phase 2 | Pending |
+| PROF-03 | Phase 2 | Pending |
+| PROF-04 | Phase 2 | Pending |
+| TEND-01 | Phase 3 | Pending |
+| TEND-02 | Phase 3 | Pending |
+| TEND-03 | Phase 3 | Pending |
+| TEND-04 | Phase 3 | Pending |
+| BID-01 | Phase 4 | Pending |
+| BID-02 | Phase 4 | Pending |
+| BID-03 | Phase 4 | Pending |
+| BID-04 | Phase 4 | Pending |
+| AGEN-01 | Phase 5 | Pending |
+| AGEN-02 | Phase 5 | Pending |
+| AGEN-03 | Phase 5 | Pending |
+| VALD-01 | Phase 6 | Pending |
+| VALD-02 | Phase 6 | Pending |
+| VALD-03 | Phase 6 | Pending |
+| VALD-04 | Phase 6 | Pending |
 
 **Coverage:**
 - v1 requirements: 22 total
-- Mapped to phases: 0
-- Unmapped: 22
+- Mapped to phases: 22
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-06*
-*Last updated: 2026-02-06 after initial definition*
+*Last updated: 2026-02-06 after roadmap creation*
