@@ -36,7 +36,7 @@ Note: Limited to knowledge-based research due to web access restrictions. Versio
 | Library | Version | Purpose | When to Use |
 |---------|---------|---------|-------------|
 | shadcn/ui | Latest | UI components | Pre-built, customizable React components built on Radix UI and Tailwind. Industry standard for 2025/2026 TypeScript projects. Copy-paste approach, not npm package. |
-| Tailwind CSS | 4.x | Styling framework | Utility-first CSS, excellent DX, small bundle size with JIT. Standard for modern React apps. |
+| Tailwind CSS | 4.x | Styling framework | Utility-first CSS with CSS-based configuration. Editorial design system: monochrome (black/white) with yellow brand (#fbcb46), serif typography, sharp corners (0px radius). |
 | Radix UI | 1.x | Headless components | Accessible, unstyled primitives (forms, dialogs, dropdowns). Foundation for shadcn/ui, use directly for custom components. |
 | React Hook Form | 7.x | Form management | Best form library for React. Type-safe with Zod integration, excellent performance (uncontrolled inputs), validation support. |
 | TanStack Query | 5.x | Server state management | Data fetching, caching, synchronization. Essential for tender lists, company profiles, bid documents. Formerly React Query. |

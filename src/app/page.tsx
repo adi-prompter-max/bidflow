@@ -1,6 +1,7 @@
 import { auth } from '@/lib/auth'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default async function Home() {
   const session = await auth()
@@ -8,13 +9,14 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-6">
       <div className="max-w-3xl w-full text-center space-y-8">
-        <div className="space-y-4">
-          <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
-            BidFlow
-          </h1>
-          <p className="text-xl text-muted-foreground">
-            Win more tenders. Spend less time on paperwork.
-          </p>
+        <div className="space-y-4 flex flex-col items-center">
+          <Image
+            src="/logo.svg"
+            alt="BidFlow — Win more tenders. Spend less time on paperwork."
+            width={400}
+            height={160}
+            priority
+          />
           <p className="text-base text-muted-foreground max-w-2xl mx-auto">
             AI-powered bid generation platform for SMEs competing in EU public procurement.
           </p>
