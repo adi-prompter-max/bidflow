@@ -56,7 +56,7 @@ export function TenderFilters() {
         )}
       </div>
 
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap items-end gap-4">
         {/* Sector filter */}
         <div className="w-[200px]">
           <Select value={sector || "all"} onValueChange={(value) => updateFilter("sector", value === "all" ? "" : value)}>

@@ -4,25 +4,25 @@
   /* =========================
      COLORS — Monochrome + Yellow Brand
   ========================== */
-  --color-background: 0 0% 100%;
-  --color-foreground: 0 0% 0%;
-  --color-card: 0 0% 100%;
-  --color-card-foreground: 0 0% 0%;
-  --color-popover: 0 0% 100%;
-  --color-popover-foreground: 0 0% 0%;
-  --color-primary: 44 96% 63%;
-  --color-primary-foreground: 0 0% 0%;
-  --color-secondary: 0 0% 96%;
-  --color-secondary-foreground: 0 0% 0%;
-  --color-muted: 0 0% 96%;
-  --color-muted-foreground: 0 0% 32%;
-  --color-accent: 44 96% 63%;
-  --color-accent-foreground: 0 0% 0%;
-  --color-destructive: 0 84.2% 60.2%;
-  --color-destructive-foreground: 0 0% 100%;
-  --color-border: 0 0% 0%;
-  --color-input: 0 0% 90%;
-  --color-ring: 0 0% 0%;
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(0 0% 0%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(0 0% 0%);
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(0 0% 0%);
+  --color-primary: hsl(44 96% 63%);
+  --color-primary-foreground: hsl(0 0% 0%);
+  --color-secondary: hsl(0 0% 96%);
+  --color-secondary-foreground: hsl(0 0% 0%);
+  --color-muted: hsl(0 0% 96%);
+  --color-muted-foreground: hsl(0 0% 32%);
+  --color-accent: hsl(44 96% 63%);
+  --color-accent-foreground: hsl(0 0% 0%);
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive-foreground: hsl(0 0% 100%);
+  --color-border: hsl(0 0% 0%);
+  --color-input: hsl(0 0% 90%);
+  --color-ring: hsl(0 0% 0%);
 
   /* =========================
      BORDER RADIUS

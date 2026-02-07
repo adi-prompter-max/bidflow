@@ -11,10 +11,10 @@ export default async function Home() {
       <div className="max-w-3xl w-full text-center space-y-8">
         <div className="space-y-4 flex flex-col items-center">
           <Image
-            src="/logo.svg"
+            src="/logo.png"
             alt="BidFlow — Win more tenders. Spend less time on paperwork."
-            width={400}
-            height={160}
+            width={500}
+            height={200}
             priority
           />
           <p className="text-base text-muted-foreground max-w-2xl mx-auto">
