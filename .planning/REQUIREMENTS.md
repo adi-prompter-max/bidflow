@@ -29,10 +29,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Bid Creation
 
-- [ ] **BID-01**: Platform presents structured plain-language questions mapped to tender requirements
-- [ ] **BID-02**: System auto-saves bid drafts as user progresses through questions
-- [ ] **BID-03**: User can track bid status (Draft / In Review / Finalized)
-- [ ] **BID-04**: System displays deadline countdown on active bids
+- [x] **BID-01**: Platform presents structured plain-language questions mapped to tender requirements
+- [x] **BID-02**: System auto-saves bid drafts as user progresses through questions
+- [x] **BID-03**: User can track bid status (Draft / In Review / Finalized)
+- [x] **BID-04**: System displays deadline countdown on active bids
 
 ### AI Generation
 
@@ -107,14 +107,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PROF-02 | Phase 2 | Complete |
 | PROF-03 | Phase 2 | Complete |
 | PROF-04 | Phase 2 | Complete |
-| TEND-01 | Phase 3 | Pending |
-| TEND-02 | Phase 3 | Pending |
-| TEND-03 | Phase 3 | Pending |
-| TEND-04 | Phase 3 | Pending |
-| BID-01 | Phase 4 | Pending |
-| BID-02 | Phase 4 | Pending |
-| BID-03 | Phase 4 | Pending |
-| BID-04 | Phase 4 | Pending |
+| TEND-01 | Phase 3 | Complete |
+| TEND-02 | Phase 3 | Complete |
+| TEND-03 | Phase 3 | Complete |
+| TEND-04 | Phase 3 | Complete |
+| BID-01 | Phase 4 | Complete |
+| BID-02 | Phase 4 | Complete |
+| BID-03 | Phase 4 | Complete |
+| BID-04 | Phase 4 | Complete |
 | AGEN-01 | Phase 5 | Pending |
 | AGEN-02 | Phase 5 | Pending |
 | AGEN-03 | Phase 5 | Pending |
