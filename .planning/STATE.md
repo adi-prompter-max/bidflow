@@ -10,29 +10,29 @@ See: .planning/PROJECT.md (updated 2026-02-06)
 ## Current Position
 
 Phase: 2 of 6 (Company Profiling)
-Plan: 2 of 4 (in progress)
+Plan: 3 of 4 (in progress)
 Status: In progress
-Last activity: 2026-02-07 — Completed 02-02-PLAN.md (Profile Wizard UI & Server Actions)
+Last activity: 2026-02-07 — Completed 02-03-PLAN.md (Wizard Steps 3-5)
 
-Progress: [███░░░░░░░] ~27%
+Progress: [████░░░░░░] ~33%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 4.4 min
-- Total execution time: 0.37 hours
+- Total plans completed: 6
+- Average duration: 4.3 min
+- Total execution time: 0.43 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1 | 3 | 15min | 5min |
-| 2 | 2 | 7min | 3.5min |
+| 2 | 3 | 11min | 3.7min |
 
 **Recent Trend:**
-- Last 5 plans: 2min, 4min, 3min, 4min
-- Trend: Excellent velocity, consistent 3-4min per plan
+- Last 5 plans: 4min, 3min, 4min, 4min
+- Trend: Excellent velocity, consistent 4min per plan
 
 *Updated after each plan completion*
 
@@ -62,6 +62,9 @@ Recent decisions affecting current work:
 - **[02-02]** Added @unique constraint to Company.ownerId for upsert pattern (enables auto-save)
 - **[02-02]** Auto-save on blur for text inputs, auto-save on change for selections (500ms debounce)
 - **[02-02]** URL synchronization with window.history.replaceState to avoid page reloads
+- **[02-03]** Tag input normalizes tags (trim, lowercase) for consistency
+- **[02-03]** Certifications use inline forms, projects use modal dialog based on form complexity
+- **[02-03]** z.number() instead of z.coerce.number() for yearCompleted to avoid TypeScript type issues
 
 ### Pending Todos
 
@@ -74,10 +77,10 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-07 00:26 (plan 02-02 execution)
-Stopped at: Completed 02-02-PLAN.md (Profile Wizard UI & Server Actions)
+Last session: 2026-02-07 00:34 (plan 02-03 execution)
+Stopped at: Completed 02-03-PLAN.md (Wizard Steps 3-5)
 Resume file: None
-Next: /gsd:execute-phase 2 (continue with plan 02-03)
+Next: /gsd:execute-phase 2 (continue with plan 02-04)
 
 ---
 *State initialized: 2026-02-06*
