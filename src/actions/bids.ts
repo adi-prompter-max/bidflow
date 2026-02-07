@@ -17,6 +17,12 @@ type ActionResult =
   | { success: true; data?: unknown }
   | { success: false; errors?: Record<string, string[]>; message?: string }
 
+export type GeneratedBidContent = {
+  answers: Record<string, unknown>       // Original Q&A answers
+  sections: Record<string, string>       // section_id -> generated_text
+  generatedAt: string                    // ISO timestamp
+}
+
 /**
  * Create a new bid for a tender
  * Idempotent: returns existing bid if already created
@@ -234,6 +240,72 @@ export async function updateBidStatus(
     return {
       success: false,
       message: 'Failed to update bid status. Please try again.',
+    }
+  }
+}
+
+/**
+ * Save generated bid content
+ * Stores both original answers and generated sections in bid.content
+ * Only allowed for DRAFT or IN_REVIEW status
+ */
+export async function saveGeneratedBid(
+  bidId: string,
+  generatedContent: GeneratedBidContent
+): Promise<ActionResult> {
+  try {
+    const session = await verifySession()
+
+    // Find bid and verify ownership
+    const bid = await prisma.bid.findUnique({
+      where: { id: bidId },
+      include: {
+        company: true,
+        tender: true,
+      },
+    })
+
+    if (!bid) {
+      return {
+        success: false,
+        message: 'Bid not found.',
+      }
+    }
+
+    // Verify ownership
+    if (bid.company.ownerId !== session.userId) {
+      return {
+        success: false,
+        message: 'Unauthorized.',
+      }
+    }
+
+    // Only allow saving if status is DRAFT or IN_REVIEW
+    if (bid.status !== BidStatus.DRAFT && bid.status !== BidStatus.IN_REVIEW) {
+      return {
+        success: false,
+        message: 'Cannot modify bid in current status.',
+      }
+    }
+
+    // Update bid content with generated content
+    await prisma.bid.update({
+      where: { id: bidId },
+      data: {
+        content: generatedContent as Prisma.JsonObject,
+        updatedAt: new Date(),
+      },
+    })
+
+    // Revalidate bid workspace page
+    revalidatePath(`/dashboard/tenders/${bid.tenderId}/bid`)
+
+    return { success: true }
+  } catch (error) {
+    console.error('saveGeneratedBid error:', error)
+    return {
+      success: false,
+      message: 'Failed to save generated bid. Please try again.',
     }
   }
 }
