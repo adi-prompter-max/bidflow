@@ -72,8 +72,8 @@ export function WizardContainer({
   }
 
   const handleFinish = () => {
-    // Navigate back to dashboard (profile view page will be built in Plan 04)
-    router.push('/dashboard')
+    // Navigate to profile view page
+    router.push('/dashboard/profile')
   }
 
   const renderStep = () => {

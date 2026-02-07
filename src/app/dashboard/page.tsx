@@ -1,6 +1,7 @@
 import { verifySession, getUser } from '@/lib/dal'
 import { prisma } from '@/lib/prisma'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { CompletenessCard } from '@/components/profile/completeness-card'
 
 export default async function DashboardPage() {
   // Verify session - redirects to /login if not authenticated
@@ -51,19 +52,7 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg font-medium">Company Profile</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-sm text-muted-foreground">
-              Complete your company profile to start bidding
-            </div>
-            <p className="text-xs text-muted-foreground mt-2">
-              Coming in Phase 2
-            </p>
-          </CardContent>
-        </Card>
+        <CompletenessCard />
       </div>
     </div>
   )
