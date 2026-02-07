@@ -41,6 +41,9 @@ export function GenerationProgress({
     const generateAllSections = async () => {
       setIsGenerating(true)
 
+      // Local accumulator avoids stale closure over generatedContent state
+      const finalContent: Record<string, string> = {}
+
       for (let i = 0; i < BID_SECTIONS.length; i++) {
         if (!isMounted.current) return
 
@@ -85,6 +88,9 @@ export function GenerationProgress({
             }
           }
 
+          // Store final text in local accumulator
+          finalContent[section.id] = accumulatedText
+
           // Mark section as complete
           if (isMounted.current) {
             setSectionStatuses((prev) => ({
@@ -108,18 +114,18 @@ export function GenerationProgress({
         }
       }
 
-      // All sections complete - save to database
+      // All sections complete - save to database using local accumulator (not stale state)
       if (isMounted.current) {
         try {
           const result = await saveGeneratedBid(bidId, {
             answers,
-            sections: generatedContent,
+            sections: finalContent,
             generatedAt: new Date().toISOString(),
           })
 
           if (result.success && isMounted.current) {
             toast.success('Bid generated successfully')
-            onComplete(generatedContent)
+            onComplete(finalContent)
           } else if (isMounted.current) {
             toast.error('Failed to save generated bid')
           }
