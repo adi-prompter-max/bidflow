@@ -6,6 +6,8 @@ import { WizardProgress } from './wizard-progress'
 import { StepCompanyInfo } from './step-company-info'
 import { StepSectors } from './step-sectors'
 import { StepCapabilities } from './step-capabilities'
+import { StepCertifications } from './step-certifications'
+import { StepProjects } from './step-projects'
 import { Button } from '@/components/ui/button'
 import type { Company, Certification, Project } from '@prisma/client'
 
@@ -70,8 +72,8 @@ export function WizardContainer({
   }
 
   const handleFinish = () => {
-    // Navigate back to profile or dashboard
-    router.push('/dashboard/profile')
+    // Navigate back to dashboard (profile view page will be built in Plan 04)
+    router.push('/dashboard')
   }
 
   const renderStep = () => {
@@ -83,9 +85,9 @@ export function WizardContainer({
       case 3:
         return <StepCapabilities initialData={initialData} />
       case 4:
-        return <div className="p-8 text-center text-muted-foreground">Step 4: Certifications (Coming soon)</div>
+        return <StepCertifications initialData={initialData} />
       case 5:
-        return <div className="p-8 text-center text-muted-foreground">Step 5: Projects (Coming soon)</div>
+        return <StepProjects initialData={initialData} />
       default:
         return <div>Invalid step</div>
     }

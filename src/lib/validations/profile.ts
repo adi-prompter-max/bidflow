@@ -72,7 +72,7 @@ export const projectSchema = z.object({
   description: z.string().min(1, 'Project description is required').max(1000),
   sector: z.string().min(1, 'Sector is required'),
   valueRange: z.string().min(1, 'Value range is required'),
-  yearCompleted: z.coerce.number().min(2000).max(new Date().getFullYear()),
+  yearCompleted: z.number().min(2000).max(new Date().getFullYear()),
 })
 
 // Types inferred from schemas
