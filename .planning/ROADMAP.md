@@ -100,10 +100,12 @@ Plans:
   3. System generates professional bid narratives from plain-language answers (mocked responses)
   4. Generation happens section-by-section with visible progress indication
   5. Generated content appears in bid workspace for review
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 05-01: TBD during planning
+- [ ] 05-01-PLAN.md — Bid section mapping, narrative templates, mock streaming generator, saveGeneratedBid action
+- [ ] 05-02-PLAN.md — Generation UI components (trigger, progress, section display) and workspace integration
+- [ ] 05-03-PLAN.md — Generated content persistence on page load, end-to-end visual verification
 
 ### Phase 6: Validation & Export
 **Goal**: Users can validate bid completeness, review/edit content, and export compliant documents
@@ -132,7 +134,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Company Profiling | 4/4 | Complete | 2026-02-07 |
 | 3. Tender Discovery | 3/3 | Complete | 2026-02-07 |
 | 4. Bid Workspace | 3/3 | Complete | 2026-02-07 |
-| 5. AI Bid Generation | 0/TBD | Not started | - |
+| 5. AI Bid Generation | 0/3 | Not started | - |
 | 6. Validation & Export | 0/TBD | Not started | - |
 
 ---
