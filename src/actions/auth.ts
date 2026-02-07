@@ -3,7 +3,6 @@
 import bcrypt from 'bcryptjs'
 import { signIn, signOut } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
-import { redirect } from 'next/navigation'
 import { AuthError } from 'next-auth'
 import { SignupSchema, LoginSchema, type AuthActionState } from '@/types/auth'
 
@@ -52,8 +51,8 @@ export async function signup(
     },
   })
 
-  // Sign in automatically — use redirect: false to avoid
-  // NEXT_REDIRECT throw inside try/catch (breaks useActionState)
+  // Sign in automatically — use redirect: false so signIn returns
+  // instead of throwing NEXT_REDIRECT (which breaks useActionState)
   try {
     await signIn('credentials', {
       email,
@@ -71,7 +70,7 @@ export async function signup(
     }
   }
 
-  redirect('/dashboard')
+  return { success: true }
 }
 
 export async function login(
@@ -93,8 +92,8 @@ export async function login(
 
   const { email, password } = validatedFields.data
 
-  // Call signIn with credentials — use redirect: false to avoid
-  // NEXT_REDIRECT throw inside try/catch (breaks useActionState)
+  // Call signIn with credentials — use redirect: false so signIn returns
+  // instead of throwing NEXT_REDIRECT (which breaks useActionState)
   try {
     await signIn('credentials', {
       email,
@@ -119,7 +118,7 @@ export async function login(
     }
   }
 
-  redirect('/dashboard')
+  return { success: true }
 }
 
 export async function logout() {

@@ -22,4 +22,5 @@ export type LoginInput = z.infer<typeof LoginSchema>
 export type AuthActionState = {
   errors?: Record<string, string[]>
   message?: string
+  success?: boolean
 } | undefined

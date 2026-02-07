@@ -1,6 +1,7 @@
 'use client'
 
-import { useActionState } from 'react'
+import { useActionState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
@@ -27,6 +28,13 @@ import { Input } from '@/components/ui/input'
 
 export function LoginForm() {
   const [state, formAction, isPending] = useActionState(login, undefined)
+  const router = useRouter()
+
+  useEffect(() => {
+    if (state?.success) {
+      router.push('/dashboard')
+    }
+  }, [state?.success, router])
 
   const form = useForm<LoginInput>({
     resolver: zodResolver(LoginSchema),
