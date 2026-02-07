@@ -22,10 +22,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Tender Discovery
 
-- [ ] **TEND-01**: User can browse a list of mock tenders with key details (title, sector, value, deadline)
-- [ ] **TEND-02**: User can filter tenders by sector, estimated value, and deadline
-- [ ] **TEND-03**: System matches and ranks tenders by relevance to company profile
-- [ ] **TEND-04**: User can view full tender details including requirements, deadlines, and documents
+- [x] **TEND-01**: User can browse a list of mock tenders with key details (title, sector, value, deadline)
+- [x] **TEND-02**: User can filter tenders by sector, estimated value, and deadline
+- [x] **TEND-03**: System matches and ranks tenders by relevance to company profile
+- [x] **TEND-04**: User can view full tender details including requirements, deadlines, and documents
 
 ### Bid Creation
 
