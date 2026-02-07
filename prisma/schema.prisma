@@ -58,17 +58,47 @@ model VerificationToken {
 // === BidFlow Domain Models ===
 
 model Company {
-  id             String   @id @default(cuid())
-  name           String
-  sector         String   // "IT" or "Construction"
-  description    String?  @db.Text
-  capabilities   String[] // Array of capability tags
-  certifications String[] // Array of certification names
-  ownerId        String
-  owner          User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-  bids           Bid[]
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  id                     String          @id @default(cuid())
+  name                   String
+  sectors                String[]        // Multi-select: ["IT", "Construction"]
+  sectorSubcategories    Json?           // {"IT": ["Cloud Services", "Cybersecurity"], "Construction": ["Renovation"]}
+  country                String?
+  size                   String?         // Employee range: "1-10", "11-50", "51-200", "201-500", "500+"
+  website                String?
+  description            String?         @db.Text // Brief company description (Step 1)
+  capabilityDescription  String?         @db.Text // Detailed capability free-text (Step 3)
+  capabilityTags         String[]        // Capability tags (Step 3)
+  ownerId                String
+  owner                  User            @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  bids                   Bid[]
+  certifications         Certification[]
+  projects               Project[]
+  createdAt              DateTime        @default(now())
+  updatedAt              DateTime        @updatedAt
+}
+
+model Certification {
+  id          String    @id @default(cuid())
+  name        String
+  issuingBody String
+  issueDate   DateTime
+  expiryDate  DateTime?
+  companyId   String
+  company     Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+}
+
+model Project {
+  id            String   @id @default(cuid())
+  name          String
+  clientName    String
+  description   String   @db.Text
+  sector        String
+  valueRange    String
+  yearCompleted Int
+  companyId     String
+  company       Company  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now())
 }
 
 model Tender {

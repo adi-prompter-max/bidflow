@@ -30,23 +30,93 @@ async function main() {
     create: {
       id: 'demo-company-1',
       name: 'TechBuild Solutions Ltd.',
-      sector: 'IT',
+      sectors: ['IT'],
+      sectorSubcategories: {
+        IT: ['Cloud Services', 'Cybersecurity', 'Software Development'],
+      },
+      country: 'United Kingdom',
+      size: '51-200',
+      website: 'https://techbuild.example.com',
       description:
         'Full-service IT consulting and software development firm specializing in cloud migration, cybersecurity, and digital transformation for public sector clients.',
-      capabilities: [
+      capabilityDescription:
+        'We provide end-to-end IT services including cloud migration to Azure and AWS, comprehensive cybersecurity solutions with penetration testing and security audits, custom software development using modern frameworks, and digital transformation consulting for public sector organizations. Our team holds industry-leading certifications and has delivered over 50 successful projects for NHS trusts, local councils, and government agencies.',
+      capabilityTags: [
         'Software Development',
         'Cloud Migration',
         'Cybersecurity',
         'IT Consulting',
         'Digital Transformation',
       ],
-      certifications: ['ISO 27001', 'Cyber Essentials Plus', 'ISO 9001'],
       ownerId: demoUser.id,
     },
   })
   console.log('✓ Demo company created:', demoCompany.name)
 
-  // 3. Create sample tenders
+  // 3. Create demo certifications
+  const cert1 = await prisma.certification.create({
+    data: {
+      name: 'ISO 27001',
+      issuingBody: 'British Standards Institution (BSI)',
+      issueDate: new Date('2023-03-15'),
+      expiryDate: new Date('2026-03-14'),
+      companyId: demoCompany.id,
+    },
+  })
+  console.log('✓ Certification created:', cert1.name)
+
+  const cert2 = await prisma.certification.create({
+    data: {
+      name: 'Cyber Essentials Plus',
+      issuingBody: 'IASME Consortium',
+      issueDate: new Date('2024-06-01'),
+      expiryDate: new Date('2025-06-01'),
+      companyId: demoCompany.id,
+    },
+  })
+  console.log('✓ Certification created:', cert2.name)
+
+  const cert3 = await prisma.certification.create({
+    data: {
+      name: 'ISO 9001',
+      issuingBody: 'British Standards Institution (BSI)',
+      issueDate: new Date('2022-09-20'),
+      expiryDate: new Date('2025-09-19'),
+      companyId: demoCompany.id,
+    },
+  })
+  console.log('✓ Certification created:', cert3.name)
+
+  // 4. Create demo projects
+  const project1 = await prisma.project.create({
+    data: {
+      name: 'NHS Digital Transformation Platform',
+      clientName: 'Greater Manchester NHS Trust',
+      description:
+        'Delivered a comprehensive digital transformation platform integrating patient records, appointment scheduling, and staff management for a 5,000-user NHS Trust. Implemented FHIR-compliant APIs, Azure cloud infrastructure, and achieved NHS Digital Technology Assessment Framework compliance. Successfully migrated legacy systems with zero downtime and provided comprehensive staff training.',
+      sector: 'IT',
+      valueRange: '500k - 1M',
+      yearCompleted: 2023,
+      companyId: demoCompany.id,
+    },
+  })
+  console.log('✓ Project created:', project1.name)
+
+  const project2 = await prisma.project.create({
+    data: {
+      name: 'Local Council Cybersecurity Overhaul',
+      clientName: 'Birmingham City Council',
+      description:
+        'Conducted full cybersecurity audit covering 2,000+ endpoints, cloud services, and network infrastructure. Implemented penetration testing remediation, deployed advanced threat detection systems, and delivered security awareness training to 500+ staff members. Achieved Cyber Essentials Plus certification for the council and established ongoing vulnerability management program.',
+      sector: 'IT',
+      valueRange: '250k - 500k',
+      yearCompleted: 2024,
+      companyId: demoCompany.id,
+    },
+  })
+  console.log('✓ Project created:', project2.name)
+
+  // 5. Create sample tenders
   const now = new Date()
   const threeMonthsLater = new Date(now.getTime() + 90 * 24 * 60 * 60 * 1000)
   const twoMonthsLater = new Date(now.getTime() + 60 * 24 * 60 * 60 * 1000)
@@ -146,7 +216,7 @@ async function main() {
   })
   console.log('✓ Tender 3 created:', tender3.title)
 
-  // 4. Create sample bid
+  // 6. Create sample bid
   const demoBid = await prisma.bid.upsert({
     where: { id: 'bid-demo-1' },
     update: {},
@@ -170,6 +240,8 @@ async function main() {
   console.log('\nSeed complete! Summary:')
   console.log('- 1 demo user (demo@bidflow.com / Demo1234!)')
   console.log('- 1 demo company (TechBuild Solutions Ltd.)')
+  console.log('- 3 certifications (ISO 27001, Cyber Essentials Plus, ISO 9001)')
+  console.log('- 2 past projects (NHS platform, Council cybersecurity)')
   console.log('- 3 sample tenders (2 IT, 1 Construction)')
   console.log('- 1 draft bid')
 }
