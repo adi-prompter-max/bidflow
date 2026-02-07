@@ -65,10 +65,12 @@ Plans:
   3. System displays tender relevance scores based on company profile match
   4. User can view full tender details including requirements, deadlines, and documents
   5. Tenders are sorted by relevance score by default
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 03-01: TBD during planning
+- [ ] 03-01-PLAN.md — Install deps, Faker seed data (50 tenders), relevance scoring algorithm, query layer
+- [ ] 03-02-PLAN.md — Tender list page with TanStack Table, filters, sortable columns
+- [ ] 03-03-PLAN.md — Tender detail page, dashboard navigation, visual verification
 
 ### Phase 4: Bid Workspace
 **Goal**: Users can create and manage bid drafts through structured Q&A workflow with auto-save
@@ -126,7 +128,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Foundation & Authentication | 3/3 | Complete | 2026-02-06 |
 | 2. Company Profiling | 4/4 | Complete | 2026-02-07 |
-| 3. Tender Discovery | 0/TBD | Not started | - |
+| 3. Tender Discovery | 0/3 | Not started | - |
 | 4. Bid Workspace | 0/TBD | Not started | - |
 | 5. AI Bid Generation | 0/TBD | Not started | - |
 | 6. Validation & Export | 0/TBD | Not started | - |
