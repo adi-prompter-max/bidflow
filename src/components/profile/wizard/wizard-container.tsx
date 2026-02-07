@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { WizardProgress } from './wizard-progress'
 import { StepCompanyInfo } from './step-company-info'
 import { StepSectors } from './step-sectors'
+import { StepCapabilities } from './step-capabilities'
 import { Button } from '@/components/ui/button'
 import type { Company, Certification, Project } from '@prisma/client'
 
@@ -80,7 +81,7 @@ export function WizardContainer({
       case 2:
         return <StepSectors initialData={initialData} />
       case 3:
-        return <div className="p-8 text-center text-muted-foreground">Step 3: Capabilities (Coming soon)</div>
+        return <StepCapabilities initialData={initialData} />
       case 4:
         return <div className="p-8 text-center text-muted-foreground">Step 4: Certifications (Coming soon)</div>
       case 5:
