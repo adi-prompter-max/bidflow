@@ -15,10 +15,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Company Profile
 
-- [ ] **PROF-01**: User can select industry and sector (IT & Software, Construction)
-- [ ] **PROF-02**: User can describe capabilities and services (free-text and tags)
-- [ ] **PROF-03**: User can add certifications (ISO, security clearances, industry certs)
-- [ ] **PROF-04**: User can add past projects and references as portfolio evidence
+- [x] **PROF-01**: User can select industry and sector (IT & Software, Construction)
+- [x] **PROF-02**: User can describe capabilities and services (free-text and tags)
+- [x] **PROF-03**: User can add certifications (ISO, security clearances, industry certs)
+- [x] **PROF-04**: User can add past projects and references as portfolio evidence
 
 ### Tender Discovery
 
@@ -103,10 +103,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-01 | Phase 1 | Complete |
 | AUTH-02 | Phase 1 | Complete |
 | AUTH-03 | Phase 1 | Complete |
-| PROF-01 | Phase 2 | Pending |
-| PROF-02 | Phase 2 | Pending |
-| PROF-03 | Phase 2 | Pending |
-| PROF-04 | Phase 2 | Pending |
+| PROF-01 | Phase 2 | Complete |
+| PROF-02 | Phase 2 | Complete |
+| PROF-03 | Phase 2 | Complete |
+| PROF-04 | Phase 2 | Complete |
 | TEND-01 | Phase 3 | Pending |
 | TEND-02 | Phase 3 | Pending |
 | TEND-03 | Phase 3 | Pending |

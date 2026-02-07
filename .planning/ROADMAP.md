@@ -13,7 +13,7 @@ BidFlow transforms EU tender responses for SMEs through six phases: authenticati
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation & Authentication** - User accounts with demo data for immediate testing
-- [ ] **Phase 2: Company Profiling** - SME profile management with capabilities and credentials
+- [x] **Phase 2: Company Profiling** - SME profile management with capabilities and credentials
 - [ ] **Phase 3: Tender Discovery** - Browse, filter, and match tenders to company profile
 - [ ] **Phase 4: Bid Workspace** - Structured Q&A workflow with draft management
 - [ ] **Phase 5: AI Bid Generation** - Transform plain answers into professional bid narratives (mocked)
@@ -50,10 +50,10 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Database schema evolution, Zod validations, shadcn/ui components
-- [ ] 02-02-PLAN.md — Server actions for profile CRUD, wizard shell with Steps 1-2
-- [ ] 02-03-PLAN.md — Wizard Steps 3-5 (Capabilities, Certifications, Past Projects)
-- [ ] 02-04-PLAN.md — Dashboard completeness card, profile view/edit page, visual verification
+- [x] 02-01-PLAN.md — Database schema evolution, Zod validations, shadcn/ui components
+- [x] 02-02-PLAN.md — Server actions for profile CRUD, wizard shell with Steps 1-2
+- [x] 02-03-PLAN.md — Wizard Steps 3-5 (Capabilities, Certifications, Past Projects)
+- [x] 02-04-PLAN.md — Dashboard completeness card, profile view/edit page, visual verification
 
 ### Phase 3: Tender Discovery
 **Goal**: Users can discover, filter, and identify relevant tender opportunities matched to their profile
@@ -125,7 +125,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Authentication | 3/3 | Complete | 2026-02-06 |
-| 2. Company Profiling | 0/4 | Planned | - |
+| 2. Company Profiling | 4/4 | Complete | 2026-02-07 |
 | 3. Tender Discovery | 0/TBD | Not started | - |
 | 4. Bid Workspace | 0/TBD | Not started | - |
 | 5. AI Bid Generation | 0/TBD | Not started | - |
