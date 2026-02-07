@@ -10,29 +10,29 @@ See: .planning/PROJECT.md (updated 2026-02-06)
 ## Current Position
 
 Phase: 2 of 6 (Company Profiling)
-Plan: 1 of 4 (in progress)
+Plan: 2 of 4 (in progress)
 Status: In progress
-Last activity: 2026-02-07 — Completed 02-01-PLAN.md (Schema Evolution & Validation)
+Last activity: 2026-02-07 — Completed 02-02-PLAN.md (Profile Wizard UI & Server Actions)
 
-Progress: [███░░░░░░░] ~25%
+Progress: [███░░░░░░░] ~27%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
-- Average duration: 4.5 min
-- Total execution time: 0.3 hours
+- Total plans completed: 5
+- Average duration: 4.4 min
+- Total execution time: 0.37 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1 | 3 | 15min | 5min |
-| 2 | 1 | 3min | 3min |
+| 2 | 2 | 7min | 3.5min |
 
 **Recent Trend:**
-- Last 5 plans: 9min, 2min, 4min, 3min
-- Trend: Excellent velocity, plans executing efficiently
+- Last 5 plans: 2min, 4min, 3min, 4min
+- Trend: Excellent velocity, consistent 3-4min per plan
 
 *Updated after each plan completion*
 
@@ -59,6 +59,9 @@ Recent decisions affecting current work:
 - **[02-01]** Stored sectorSubcategories as Json field for flexible hierarchical data
 - **[02-01]** Used prisma db push --accept-data-loss for development (avoiding migration conflicts)
 - **[02-01]** Wizard validation granularity: separate Zod schema for each wizard step
+- **[02-02]** Added @unique constraint to Company.ownerId for upsert pattern (enables auto-save)
+- **[02-02]** Auto-save on blur for text inputs, auto-save on change for selections (500ms debounce)
+- **[02-02]** URL synchronization with window.history.replaceState to avoid page reloads
 
 ### Pending Todos
 
@@ -71,10 +74,10 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-07 00:17 (plan 02-01 execution)
-Stopped at: Completed 02-01-PLAN.md (Schema Evolution & Validation)
+Last session: 2026-02-07 00:26 (plan 02-02 execution)
+Stopped at: Completed 02-02-PLAN.md (Profile Wizard UI & Server Actions)
 Resume file: None
-Next: /gsd:execute-phase 2 (continue with plan 02-02)
+Next: /gsd:execute-phase 2 (continue with plan 02-03)
 
 ---
 *State initialized: 2026-02-06*
