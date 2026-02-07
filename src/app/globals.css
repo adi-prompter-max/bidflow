@@ -1,24 +1,62 @@
 @import "tailwindcss";
 
 @theme {
+  /* =========================
+     COLORS — Monochrome + Yellow Brand
+  ========================== */
   --color-background: 0 0% 100%;
-  --color-foreground: 222.2 84% 4.9%;
+  --color-foreground: 0 0% 0%;
   --color-card: 0 0% 100%;
-  --color-card-foreground: 222.2 84% 4.9%;
+  --color-card-foreground: 0 0% 0%;
   --color-popover: 0 0% 100%;
-  --color-popover-foreground: 222.2 84% 4.9%;
-  --color-primary: 222.2 47.4% 11.2%;
-  --color-primary-foreground: 210 40% 98%;
-  --color-secondary: 210 40% 96.1%;
-  --color-secondary-foreground: 222.2 47.4% 11.2%;
-  --color-muted: 210 40% 96.1%;
-  --color-muted-foreground: 215.4 16.3% 46.9%;
-  --color-accent: 210 40% 96.1%;
-  --color-accent-foreground: 222.2 47.4% 11.2%;
+  --color-popover-foreground: 0 0% 0%;
+  --color-primary: 44 96% 63%;
+  --color-primary-foreground: 0 0% 0%;
+  --color-secondary: 0 0% 96%;
+  --color-secondary-foreground: 0 0% 0%;
+  --color-muted: 0 0% 96%;
+  --color-muted-foreground: 0 0% 32%;
+  --color-accent: 44 96% 63%;
+  --color-accent-foreground: 0 0% 0%;
   --color-destructive: 0 84.2% 60.2%;
-  --color-destructive-foreground: 210 40% 98%;
-  --color-border: 214.3 31.8% 91.4%;
-  --color-input: 214.3 31.8% 91.4%;
-  --color-ring: 222.2 84% 4.9%;
-  --radius: 0.5rem;
+  --color-destructive-foreground: 0 0% 100%;
+  --color-border: 0 0% 0%;
+  --color-input: 0 0% 90%;
+  --color-ring: 0 0% 0%;
+
+  /* =========================
+     BORDER RADIUS
+  ========================== */
+  --radius: 0px;
+
+  /* =========================
+     FONTS
+  ========================== */
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-body: var(--font-source-serif), Georgia, serif;
+  --font-mono: var(--font-jetbrains), monospace;
+}
+
+:root {
+  /* =========================
+     BRAND TOKENS
+  ========================== */
+  --brand-primary: #fbcb46;
+  --brand-primary-foreground: #000000;
+
+  /* =========================
+     BORDER UTILITIES
+  ========================== */
+  --border-light: #e5e5e5;
+  --border-hairline: 1px solid var(--border-light);
+  --border-thin: 1px solid #000000;
+  --border-medium: 2px solid #000000;
+  --border-thick: 4px solid #000000;
+  --border-ultra: 8px solid #000000;
+
+  /* =========================
+     TRANSITIONS
+  ========================== */
+  --transition-instant: all 0ms linear;
+  --transition-fast: all 100ms linear;
 }
