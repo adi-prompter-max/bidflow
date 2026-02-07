@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-06)
 ## Current Position
 
 Phase: 5 of 6 (AI Bid Generation)
-Plan: 1 of 2
-Status: In progress
-Last activity: 2026-02-07 — Completed 05-01-PLAN.md (AI Bid Generation Backend)
+Plan: 2 of 2
+Status: Phase complete
+Last activity: 2026-02-07 — Completed 05-02-PLAN.md (Generation UI & Preview)
 
-Progress: [███████████░] 93% (14/15 known plans)
+Progress: [████████████] 100% (15/15 known plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 14
-- Average duration: 4.2 min
-- Total execution time: 1.2 hours (69 minutes)
+- Total plans completed: 15
+- Average duration: 4.1 min
+- Total execution time: 1.2 hours (72 minutes)
 
 **By Phase:**
 
@@ -31,11 +31,11 @@ Progress: [███████████░] 93% (14/15 known plans)
 | 2 | 4 | 14min | 3.5min |
 | 3 | 3 | 26min | 8.7min |
 | 4 | 3 | 12min | 4min |
-| 5 | 1 | 2min | 2min |
+| 5 | 2 | 5min | 2.5min |
 
 **Recent Trend:**
-- Last 5 plans: 21min, 3min, 2min, 7min, 2min
-- Trend: Backend data layer tasks (pure logic, no UI) consistently execute in 2-3min
+- Last 5 plans: 3min, 2min, 7min, 2min, 3min
+- Trend: Phase 5 (AI generation) completed in 5min total (backend + UI) - streaming patterns efficient
 
 *Updated after each plan completion*
 
@@ -104,6 +104,10 @@ Recent decisions affecting current work:
 - **[05-01]** Template literal functions instead of external template library (simple, testable, matches AI prompt patterns)
 - **[05-01]** ReadableStream + setTimeout for mock streaming (no AI SDK for MVP, defer to v2)
 - **[05-01]** Store both original Q&A answers and generated sections in content JSON (enables edit/regenerate)
+- **[05-02]** Three-view state machine in workspace (questions → generating → preview) for clean separation
+- **[05-02]** Content-aware auto-save constructs { answers, sections, generatedAt } when generatedSections exist
+- **[05-02]** Stream cleanup pattern: isMounted ref + reader.cancel() + reader.releaseLock() in useEffect cleanup
+- **[05-02]** Simple section title transformation (split + capitalize) instead of BID_SECTIONS lookup in preview
 
 ### Pending Todos
 
@@ -116,10 +120,10 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-07 13:41 (plan 05-01 completion)
-Stopped at: Completed 05-01-PLAN.md (AI Bid Generation Backend)
+Last session: 2026-02-07 13:46 (plan 05-02 completion)
+Stopped at: Completed 05-02-PLAN.md (Generation UI & Preview)
 Resume file: None
-Next: Phase 5 Plan 02 (Generation UI & Preview)
+Next: Phase 6 Plan 01 (Export & Review - exact plan count unknown)
 
 ---
 *State initialized: 2026-02-06*
