@@ -2,6 +2,9 @@ import { verifySession, getUser } from '@/lib/dal'
 import { prisma } from '@/lib/prisma'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { CompletenessCard } from '@/components/profile/completeness-card'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 
 export default async function DashboardPage() {
   // Verify session - redirects to /login if not authenticated
@@ -28,17 +31,19 @@ export default async function DashboardPage() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg font-medium">Open Tenders</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold">{tenderCount}</div>
-            <p className="text-sm text-muted-foreground mt-1">
-              Available opportunities
-            </p>
-          </CardContent>
-        </Card>
+        <Link href="/dashboard/tenders" className="block">
+          <Card className="hover:border-primary transition-colors cursor-pointer h-full">
+            <CardHeader>
+              <CardTitle className="text-lg font-medium">Open Tenders</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold">{tenderCount}</div>
+              <p className="text-sm text-muted-foreground mt-1">
+                Available opportunities
+              </p>
+            </CardContent>
+          </Card>
+        </Link>
 
         <Card>
           <CardHeader>
@@ -53,6 +58,16 @@ export default async function DashboardPage() {
         </Card>
 
         <CompletenessCard />
+      </div>
+
+      {/* Browse Tenders CTA */}
+      <div className="mt-8">
+        <Button asChild size="lg">
+          <Link href="/dashboard/tenders">
+            Browse Tenders
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </Button>
       </div>
     </div>
   )
