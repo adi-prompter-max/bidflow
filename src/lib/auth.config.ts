@@ -1,8 +1,4 @@
 import type { NextAuthConfig } from 'next-auth'
-import Credentials from 'next-auth/providers/credentials'
-import { z } from 'zod'
-import bcrypt from 'bcryptjs'
-import { prisma } from '@/lib/prisma'
 
 export const authConfig = {
   pages: {
@@ -24,39 +20,5 @@ export const authConfig = {
       return true // Allow public routes
     },
   },
-  providers: [
-    Credentials({
-      async authorize(credentials) {
-        const parsedCredentials = z
-          .object({
-            email: z.string().email(),
-            password: z.string().min(8)
-          })
-          .safeParse(credentials)
-
-        if (!parsedCredentials.success) return null
-
-        const { email, password } = parsedCredentials.data
-
-        // Look up user by email using Prisma directly
-        const user = await prisma.user.findUnique({
-          where: { email },
-        })
-
-        if (!user) return null
-
-        // Compare password with bcryptjs
-        const passwordsMatch = await bcrypt.compare(password, user.password)
-
-        if (!passwordsMatch) return null
-
-        // Return user object (id, name, email) on success
-        return {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-        }
-      },
-    }),
-  ],
+  providers: [], // Providers added in auth.ts (full config) — kept empty here for edge compatibility
 } satisfies NextAuthConfig
