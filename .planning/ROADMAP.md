@@ -83,10 +83,12 @@ Plans:
   4. User can see bid status (Draft / In Review / Finalized) at any time
   5. User can see deadline countdown on active bid workspace
   6. User can return to draft bid and resume from last answered question
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 04-01: TBD during planning
+- [ ] 04-01-PLAN.md — Install deps (sonner, use-debounce), question engine, bid server actions, queries, validation
+- [ ] 04-02-PLAN.md — Bid workspace Q&A page with auto-save, countdown timer, progress tracking
+- [ ] 04-03-PLAN.md — Start Bid integration on tender detail, dashboard active bids, visual verification
 
 ### Phase 5: AI Bid Generation
 **Goal**: Users can generate professional bid narratives from plain-language answers using mocked AI
@@ -129,7 +131,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 1. Foundation & Authentication | 3/3 | Complete | 2026-02-06 |
 | 2. Company Profiling | 4/4 | Complete | 2026-02-07 |
 | 3. Tender Discovery | 3/3 | Complete | 2026-02-07 |
-| 4. Bid Workspace | 0/TBD | Not started | - |
+| 4. Bid Workspace | 0/3 | Not started | - |
 | 5. AI Bid Generation | 0/TBD | Not started | - |
 | 6. Validation & Export | 0/TBD | Not started | - |
 
