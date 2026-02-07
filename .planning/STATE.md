@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-06)
 ## Current Position
 
 Phase: 3 of 6 (Tender Discovery)
-Plan: 1 of 4 (in progress)
+Plan: 2 of 4 (complete - 03-02 done)
 Status: In progress
-Last activity: 2026-02-07 — Completed 03-01-PLAN.md (Tender Data Foundation)
+Last activity: 2026-02-07 — Completed 03-02-PLAN.md (Tender Discovery List Page)
 
-Progress: [█████░░░░░] ~42%
+Progress: [█████░░░░░] ~47%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
-- Average duration: 4.0 min
-- Total execution time: 0.53 hours
+- Total plans completed: 9
+- Average duration: 3.6 min
+- Total execution time: 0.56 hours
 
 **By Phase:**
 
@@ -29,11 +29,11 @@ Progress: [█████░░░░░] ~42%
 |-------|-------|-------|----------|
 | 1 | 3 | 15min | 5min |
 | 2 | 4 | 14min | 3.5min |
-| 3 | 1 | 4min | 4min |
+| 3 | 2 | 6min | 3min |
 
 **Recent Trend:**
-- Last 5 plans: 4min, 4min, 3min, 4min (current)
-- Trend: Excellent velocity, consistent 4min average
+- Last 5 plans: 4min, 3min, 4min, 2min (current)
+- Trend: Excellent velocity, trending faster
 
 *Updated after each plan completion*
 
@@ -75,6 +75,10 @@ Recent decisions affecting current work:
 - **[03-01]** Redistribute scoring weights when company has no projects (sector 50%, tags 50%)
 - **[03-01]** Case-insensitive tag matching for better relevance scoring
 - **[03-01]** Always filter to OPEN status tenders in query layer
+- **[03-02]** Define TanStack Table columns outside component to prevent infinite re-render loop
+- **[03-02]** Wrap TenderFilters in Suspense boundary (required for useSearchParams in Server Component context)
+- **[03-02]** Use URL search params for filter state (shareable/bookmarkable URLs)
+- **[03-02]** Default sorting by relevanceScore descending
 
 ### Pending Todos
 
@@ -87,10 +91,10 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-07 01:19 (plan 03-01 execution)
-Stopped at: Completed 03-01-PLAN.md (Tender Data Foundation)
+Last session: 2026-02-07 01:25 (plan 03-02 execution)
+Stopped at: Completed 03-02-PLAN.md (Tender Discovery List Page)
 Resume file: None
-Next: Continue Phase 3 plans
+Next: Continue Phase 3 plans (03-03 next)
 
 ---
 *State initialized: 2026-02-06*
