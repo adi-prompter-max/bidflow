@@ -47,10 +47,13 @@ Plans:
   3. User can add certifications (ISO, security clearances, industry-specific)
   4. User can add past projects with descriptions and references
   5. Profile data persists and displays correctly across sessions
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 02-01: TBD during planning
+- [ ] 02-01-PLAN.md — Database schema evolution, Zod validations, shadcn/ui components
+- [ ] 02-02-PLAN.md — Server actions for profile CRUD, wizard shell with Steps 1-2
+- [ ] 02-03-PLAN.md — Wizard Steps 3-5 (Capabilities, Certifications, Past Projects)
+- [ ] 02-04-PLAN.md — Dashboard completeness card, profile view/edit page, visual verification
 
 ### Phase 3: Tender Discovery
 **Goal**: Users can discover, filter, and identify relevant tender opportunities matched to their profile
@@ -122,7 +125,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Authentication | 3/3 | Complete | 2026-02-06 |
-| 2. Company Profiling | 0/TBD | Not started | - |
+| 2. Company Profiling | 0/4 | Planned | - |
 | 3. Tender Discovery | 0/TBD | Not started | - |
 | 4. Bid Workspace | 0/TBD | Not started | - |
 | 5. AI Bid Generation | 0/TBD | Not started | - |
