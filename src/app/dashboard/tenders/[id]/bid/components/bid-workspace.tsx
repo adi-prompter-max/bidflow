@@ -9,8 +9,10 @@ import { QuestionCard } from './question-card'
 import { DeadlineTimer } from './deadline-timer'
 import { ProgressIndicator } from './progress-indicator'
 import { BidStatusBadge } from './bid-status-badge'
+import { GenerationTrigger } from './generation-trigger'
+import { GenerationProgress } from './generation-progress'
 import { Button } from '@/components/ui/button'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, RotateCcw } from 'lucide-react'
 import Link from 'next/link'
 
 type BidWorkspaceProps = {
@@ -42,15 +44,24 @@ export function BidWorkspace({
   const [isSaving, setIsSaving] = useState(false)
   const [answers, setAnswers] = useState<Record<string, unknown>>(initialAnswers)
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false)
+  const [view, setView] = useState<'questions' | 'generating' | 'preview'>('questions')
+  const [generatedSections, setGeneratedSections] = useState<Record<string, string>>({})
+  const [generatedAt, setGeneratedAt] = useState<string | null>(null)
 
-  // Debounced save function
+  // Debounced save function with content-aware structure
   const debouncedSave = useDebouncedCallback(
-    async (data: Record<string, unknown>) => {
+    async (newAnswers: Record<string, unknown>) => {
       if (isSaving) return
 
       setIsSaving(true)
       try {
-        const result = await saveBidDraft(bid.id, data)
+        // Content-aware save: preserve generated sections when they exist
+        const hasGenerated = Object.keys(generatedSections).length > 0
+        const saveData = hasGenerated
+          ? { answers: newAnswers, sections: generatedSections, generatedAt }
+          : newAnswers
+
+        const result = await saveBidDraft(bid.id, saveData)
         if (result.success) {
           toast.success('Draft saved', { duration: 2000 })
           setHasUnsavedChanges(false)
@@ -161,6 +172,30 @@ export function BidWorkspace({
     }
   }
 
+  // Handle generation trigger
+  const handleGenerate = () => {
+    setView('generating')
+  }
+
+  // Handle generation complete
+  const handleGenerationComplete = (generatedContent: Record<string, string>) => {
+    setGeneratedSections(generatedContent)
+    setGeneratedAt(new Date().toISOString())
+    setView('preview')
+  }
+
+  // Handle back to questions
+  const handleBackToQuestions = () => {
+    setView('questions')
+  }
+
+  // Handle regenerate
+  const handleRegenerate = () => {
+    setGeneratedSections({})
+    setGeneratedAt(null)
+    setView('generating')
+  }
+
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-6">
       {/* Back link */}
@@ -186,35 +221,97 @@ export function BidWorkspace({
         </div>
       </div>
 
-      {/* Progress indicator */}
-      <ProgressIndicator
-        current={currentQuestionIndex + 1}
-        total={questions.length}
-        answered={answeredCount}
-      />
+      {/* Questions View */}
+      {view === 'questions' && (
+        <>
+          {/* Progress indicator */}
+          <ProgressIndicator
+            current={currentQuestionIndex + 1}
+            total={questions.length}
+            answered={answeredCount}
+          />
 
-      {/* Current question */}
-      <QuestionCard
-        question={currentQuestion}
-        value={answers[currentQuestion.id]}
-        onChange={(value) => handleAnswerChange(currentQuestion.id, value)}
-        onNext={handleNext}
-        onPrevious={handlePrevious}
-        isFirst={currentQuestionIndex === 0}
-        isLast={currentQuestionIndex === questions.length - 1}
-      />
+          {/* Current question */}
+          <QuestionCard
+            question={currentQuestion}
+            value={answers[currentQuestion.id]}
+            onChange={(value) => handleAnswerChange(currentQuestion.id, value)}
+            onNext={handleNext}
+            onPrevious={handlePrevious}
+            isFirst={currentQuestionIndex === 0}
+            isLast={currentQuestionIndex === questions.length - 1}
+          />
 
-      {/* Saving indicator */}
-      {isSaving && (
-        <p className="text-sm text-muted-foreground text-center">Saving...</p>
+          {/* Saving indicator */}
+          {isSaving && (
+            <p className="text-sm text-muted-foreground text-center">Saving...</p>
+          )}
+
+          {/* Generation Trigger - show when all required questions are answered */}
+          {allRequiredAnswered && (
+            <GenerationTrigger
+              questions={questions}
+              answers={answers}
+              onGenerate={handleGenerate}
+              disabled={view !== 'questions'}
+            />
+          )}
+
+          {/* Submit for review button */}
+          {currentQuestionIndex === questions.length - 1 && allRequiredAnswered && (
+            <div className="flex justify-center pt-4">
+              <Button onClick={handleSubmitForReview} size="lg">
+                Submit for Review
+              </Button>
+            </div>
+          )}
+        </>
       )}
 
-      {/* Submit for review button */}
-      {currentQuestionIndex === questions.length - 1 && allRequiredAnswered && (
-        <div className="flex justify-center pt-4">
-          <Button onClick={handleSubmitForReview} size="lg">
-            Submit for Review
-          </Button>
+      {/* Generating View */}
+      {view === 'generating' && (
+        <GenerationProgress
+          answers={answers}
+          tenderTitle={tender.title}
+          bidId={bid.id}
+          onComplete={handleGenerationComplete}
+        />
+      )}
+
+      {/* Preview View */}
+      {view === 'preview' && (
+        <div className="space-y-6">
+          {/* Generated sections display */}
+          <div className="space-y-4">
+            {Object.entries(generatedSections).map(([sectionId, content]) => (
+              <div key={sectionId} className="border-2 border-black bg-white">
+                <div className="border-b-2 border-black p-4 bg-white">
+                  <h3 className="font-display text-lg font-bold">
+                    {sectionId.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
+                  </h3>
+                </div>
+                <div className="p-6">
+                  <div className="whitespace-pre-wrap font-serif text-base leading-relaxed">
+                    {content}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Preview actions */}
+          <div className="flex gap-4 justify-center">
+            <Button onClick={handleBackToQuestions} variant="outline">
+              Back to Questions
+            </Button>
+            <Button onClick={handleRegenerate} variant="outline">
+              <RotateCcw className="h-4 w-4 mr-2" />
+              Regenerate
+            </Button>
+            <Button onClick={handleSubmitForReview} size="lg">
+              Submit for Review
+            </Button>
+          </div>
         </div>
       )}
     </div>
