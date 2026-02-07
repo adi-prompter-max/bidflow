@@ -63,8 +63,12 @@ export default async function BidWorkspacePage({
     tender.sector
   )
 
-  // Prepare initial answers
-  const initialAnswers = (bid.content as Record<string, unknown>) || {}
+  // Prepare initial answers and detect content format
+  const rawContent = bid.content as Record<string, unknown>
+  const isPostGeneration = rawContent?.answers && typeof rawContent.answers === 'object' && !Array.isArray(rawContent.answers)
+  const initialAnswers = isPostGeneration ? (rawContent.answers as Record<string, unknown>) : rawContent
+  const initialGeneratedSections = isPostGeneration ? (rawContent.sections as Record<string, string> | undefined) : undefined
+  const initialGeneratedAt = isPostGeneration ? (rawContent.generatedAt as string | undefined) : undefined
 
   // Determine last answered index
   let lastAnsweredIndex = 0
@@ -98,6 +102,8 @@ export default async function BidWorkspacePage({
       questions={questions}
       initialAnswers={initialAnswers}
       startIndex={lastAnsweredIndex}
+      initialGeneratedSections={initialGeneratedSections}
+      initialGeneratedAt={initialGeneratedAt}
     />
   )
 }

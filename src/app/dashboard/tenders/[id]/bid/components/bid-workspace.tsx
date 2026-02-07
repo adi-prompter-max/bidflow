@@ -31,6 +31,8 @@ type BidWorkspaceProps = {
   questions: Question[]
   initialAnswers: Record<string, unknown>
   startIndex: number
+  initialGeneratedSections?: Record<string, string>
+  initialGeneratedAt?: string
 }
 
 export function BidWorkspace({
@@ -39,14 +41,24 @@ export function BidWorkspace({
   questions,
   initialAnswers,
   startIndex,
+  initialGeneratedSections,
+  initialGeneratedAt,
 }: BidWorkspaceProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(startIndex)
   const [isSaving, setIsSaving] = useState(false)
   const [answers, setAnswers] = useState<Record<string, unknown>>(initialAnswers)
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false)
-  const [view, setView] = useState<'questions' | 'generating' | 'preview'>('questions')
-  const [generatedSections, setGeneratedSections] = useState<Record<string, string>>({})
-  const [generatedAt, setGeneratedAt] = useState<string | null>(null)
+
+  // Initialize view based on existing generated content
+  const hasExistingGenerated = Object.keys(initialGeneratedSections ?? {}).length > 0
+  const [view, setView] = useState<'questions' | 'generating' | 'preview'>(
+    hasExistingGenerated ? 'preview' : 'questions'
+  )
+
+  const [generatedSections, setGeneratedSections] = useState<Record<string, string>>(
+    initialGeneratedSections ?? {}
+  )
+  const [generatedAt, setGeneratedAt] = useState<string | null>(initialGeneratedAt ?? null)
 
   // Debounced save function with content-aware structure
   const debouncedSave = useDebouncedCallback(
