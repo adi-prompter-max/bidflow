@@ -59,12 +59,12 @@ export function TenderFilters() {
       <div className="flex flex-wrap gap-4">
         {/* Sector filter */}
         <div className="w-[200px]">
-          <Select value={sector} onValueChange={(value) => updateFilter("sector", value)}>
+          <Select value={sector || "all"} onValueChange={(value) => updateFilter("sector", value === "all" ? "" : value)}>
             <SelectTrigger>
               <SelectValue placeholder="All Sectors" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Sectors</SelectItem>
+              <SelectItem value="all">All Sectors</SelectItem>
               <SelectItem value="IT">IT</SelectItem>
               <SelectItem value="Construction">Construction</SelectItem>
             </SelectContent>
