@@ -1,5 +1,10 @@
+import { config } from 'dotenv'
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcryptjs'
+import { seedTenders } from './seeders/tenders'
+
+// Load .env.local for DATABASE_URL
+config({ path: '.env.local' })
 
 const prisma = new PrismaClient()
 
@@ -237,12 +242,26 @@ async function main() {
   })
   console.log('✓ Demo bid created for tender:', tender1.title)
 
+  // 7. Delete existing non-demo tenders and seed mock tenders
+  await prisma.tender.deleteMany({
+    where: {
+      id: {
+        not: {
+          startsWith: 'tender-demo',
+        },
+      },
+    },
+  })
+  console.log('✓ Cleared existing non-demo tenders for re-seeding')
+
+  await seedTenders(prisma)
+
   console.log('\nSeed complete! Summary:')
   console.log('- 1 demo user (demo@bidflow.com / Demo1234!)')
   console.log('- 1 demo company (TechBuild Solutions Ltd.)')
   console.log('- 3 certifications (ISO 27001, Cyber Essentials Plus, ISO 9001)')
   console.log('- 2 past projects (NHS platform, Council cybersecurity)')
-  console.log('- 3 sample tenders (2 IT, 1 Construction)')
+  console.log('- 3 demo tenders + 50 mock tenders (30 IT, 20 Construction)')
   console.log('- 1 draft bid')
 }
 
