@@ -1,11 +1,13 @@
 import { verifySession } from '@/lib/dal'
 import { getTenderById } from '@/lib/tenders/queries'
+import { prisma } from '@/lib/prisma'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
+import { BidActions } from '@/components/bids/bid-actions'
 import { format, differenceInDays } from 'date-fns'
 import {
   ArrowLeft,
@@ -31,6 +33,19 @@ export default async function TenderDetailPage({ params }: PageProps) {
 
   if (!tender) {
     notFound()
+  }
+
+  // Check for existing bid
+  const company = await prisma.company.findUnique({
+    where: { ownerId: session.userId },
+  })
+
+  let existingBid = null
+  if (company) {
+    existingBid = await prisma.bid.findFirst({
+      where: { tenderId: id, companyId: company.id },
+      select: { id: true, status: true },
+    })
   }
 
   // Calculate days remaining until deadline
@@ -118,6 +133,21 @@ export default async function TenderDetailPage({ params }: PageProps) {
               </Badge>
             </div>
           </div>
+        </div>
+
+        {/* Bid Actions */}
+        <div className="mt-4">
+          {tender.status === 'OPEN' ? (
+            <BidActions
+              tenderId={id}
+              existingBidId={existingBid?.id}
+              existingBidStatus={existingBid?.status}
+            />
+          ) : (
+            <p className="text-sm text-muted-foreground">
+              This tender is no longer accepting bids
+            </p>
+          )}
         </div>
       </div>
 

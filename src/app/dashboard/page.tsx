@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { CompletenessCard } from '@/components/profile/completeness-card'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, FileEdit } from 'lucide-react'
 
 export default async function DashboardPage() {
   // Verify session - redirects to /login if not authenticated
@@ -13,10 +13,23 @@ export default async function DashboardPage() {
   // Get current user details
   const user = await getUser()
 
+  // Get user's company
+  const company = await prisma.company.findUnique({
+    where: { ownerId: user?.id || '' },
+  })
+
   // Fetch summary statistics
-  const [tenderCount, bidCount] = await Promise.all([
+  const [tenderCount, bidCount, activeBidsCount] = await Promise.all([
     prisma.tender.count({ where: { status: 'OPEN' } }),
     prisma.bid.count(),
+    company
+      ? prisma.bid.count({
+          where: {
+            companyId: company.id,
+            status: { in: ['DRAFT', 'IN_REVIEW'] },
+          },
+        })
+      : Promise.resolve(0),
   ])
 
   return (
@@ -40,6 +53,23 @@ export default async function DashboardPage() {
               <div className="text-3xl font-bold">{tenderCount}</div>
               <p className="text-sm text-muted-foreground mt-1">
                 Available opportunities
+              </p>
+            </CardContent>
+          </Card>
+        </Link>
+
+        <Link href="/dashboard/tenders" className="block">
+          <Card className="hover:border-primary transition-colors cursor-pointer h-full">
+            <CardHeader>
+              <CardTitle className="text-lg font-medium flex items-center gap-2">
+                <FileEdit className="h-4 w-4" />
+                Active Bids
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold">{activeBidsCount}</div>
+              <p className="text-sm text-muted-foreground mt-1">
+                In progress or under review
               </p>
             </CardContent>
           </Card>
