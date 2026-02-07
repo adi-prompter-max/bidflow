@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Company Profiling** - SME profile management with capabilities and credentials
 - [x] **Phase 3: Tender Discovery** - Browse, filter, and match tenders to company profile
 - [x] **Phase 4: Bid Workspace** - Structured Q&A workflow with draft management
-- [ ] **Phase 5: AI Bid Generation** - Transform plain answers into professional bid narratives (mocked)
+- [x] **Phase 5: AI Bid Generation** - Transform plain answers into professional bid narratives (mocked)
 - [ ] **Phase 6: Validation & Export** - Content validation and compliant PDF/DOCX export
 
 ## Phase Details
@@ -103,9 +103,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 05-01-PLAN.md — Bid section mapping, narrative templates, mock streaming generator, saveGeneratedBid action
-- [ ] 05-02-PLAN.md — Generation UI components (trigger, progress, section display) and workspace integration
-- [ ] 05-03-PLAN.md — Generated content persistence on page load, end-to-end visual verification
+- [x] 05-01-PLAN.md — Bid section mapping, narrative templates, mock streaming generator, saveGeneratedBid action
+- [x] 05-02-PLAN.md — Generation UI components (trigger, progress, section display) and workspace integration
+- [x] 05-03-PLAN.md — Generated content persistence on page load, end-to-end visual verification
 
 ### Phase 6: Validation & Export
 **Goal**: Users can validate bid completeness, review/edit content, and export compliant documents
@@ -134,7 +134,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Company Profiling | 4/4 | Complete | 2026-02-07 |
 | 3. Tender Discovery | 3/3 | Complete | 2026-02-07 |
 | 4. Bid Workspace | 3/3 | Complete | 2026-02-07 |
-| 5. AI Bid Generation | 0/3 | Not started | - |
+| 5. AI Bid Generation | 3/3 | Complete | 2026-02-07 |
 | 6. Validation & Export | 0/TBD | Not started | - |
 
 ---

@@ -36,9 +36,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### AI Generation
 
-- [ ] **AGEN-01**: System extracts and structures requirements from tender data into sections
-- [ ] **AGEN-02**: AI generates professional bid narratives from plain-language answers (mocked for MVP)
-- [ ] **AGEN-03**: Generation happens section-by-section with progress indication
+- [x] **AGEN-01**: System extracts and structures requirements from tender data into sections
+- [x] **AGEN-02**: AI generates professional bid narratives from plain-language answers (mocked for MVP)
+- [x] **AGEN-03**: Generation happens section-by-section with progress indication
 
 ### Validation & Export
 
@@ -115,9 +115,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | BID-02 | Phase 4 | Complete |
 | BID-03 | Phase 4 | Complete |
 | BID-04 | Phase 4 | Complete |
-| AGEN-01 | Phase 5 | Pending |
-| AGEN-02 | Phase 5 | Pending |
-| AGEN-03 | Phase 5 | Pending |
+| AGEN-01 | Phase 5 | Complete |
+| AGEN-02 | Phase 5 | Complete |
+| AGEN-03 | Phase 5 | Complete |
 | VALD-01 | Phase 6 | Pending |
 | VALD-02 | Phase 6 | Pending |
 | VALD-03 | Phase 6 | Pending |
