@@ -52,12 +52,13 @@ export async function signup(
     },
   })
 
-  // Sign in automatically
+  // Sign in automatically — use redirect: false to avoid
+  // NEXT_REDIRECT throw inside try/catch (breaks useActionState)
   try {
     await signIn('credentials', {
       email,
       password,
-      redirectTo: '/dashboard',
+      redirect: false,
     })
   } catch (error) {
     if (error instanceof AuthError) {
@@ -65,8 +66,12 @@ export async function signup(
         message: 'Account created but sign-in failed. Please try logging in.',
       }
     }
-    throw error // Re-throw non-auth errors (including NEXT_REDIRECT)
+    return {
+      message: 'Account created but sign-in failed. Please try logging in.',
+    }
   }
+
+  redirect('/dashboard')
 }
 
 export async function login(
@@ -88,12 +93,13 @@ export async function login(
 
   const { email, password } = validatedFields.data
 
-  // Call signIn with credentials
+  // Call signIn with credentials — use redirect: false to avoid
+  // NEXT_REDIRECT throw inside try/catch (breaks useActionState)
   try {
     await signIn('credentials', {
       email,
       password,
-      redirectTo: '/dashboard',
+      redirect: false,
     })
   } catch (error) {
     if (error instanceof AuthError) {
@@ -108,8 +114,12 @@ export async function login(
           }
       }
     }
-    throw error // Re-throw non-auth errors (including NEXT_REDIRECT)
+    return {
+      message: 'Something went wrong. Please try again.',
+    }
   }
+
+  redirect('/dashboard')
 }
 
 export async function logout() {
