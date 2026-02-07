@@ -68,7 +68,7 @@ model Company {
   description            String?         @db.Text // Brief company description (Step 1)
   capabilityDescription  String?         @db.Text // Detailed capability free-text (Step 3)
   capabilityTags         String[]        // Capability tags (Step 3)
-  ownerId                String
+  ownerId                String          @unique
   owner                  User            @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   bids                   Bid[]
   certifications         Certification[]
